@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 
+
 def get_html(url):
     try:
         result = requests.get(url)
@@ -9,6 +10,7 @@ def get_html(url):
     except(requests.RequestException, ValueError):
         print("Web error")
         return False
+
 
 def last_page():
     html = get_html("https://get.run/races/europe/russia")
@@ -24,7 +26,8 @@ def last_page():
 links = last_page()
 
 #print(last_page())        
-        
+
+
 
 def get_data(links):
     for link in links:
@@ -32,19 +35,33 @@ def get_data(links):
         webname = 'https://get.run'
         if html:
             soup = BeautifulSoup(html, 'html.parser')
-            all_data = soup.findAll('div', class_="text")
+            all_data = soup.findAll('div', {"class":["text","cont"]})
             result_data = []
-            for data in all_data:#soup.findAll('div', class_="text"):
-                #data = soup.find('div', class_="cont")
-                title = data.find('div', {"class" : "title"}).find('a').text
-                url = data.find('a')['href']
-                # calendar = data.find
+            for data in all_data:
+                title = data.find('div',class_ = "title")
+                url = data.find('a')
+                place = data.findAll('div',class_ =  "article")
+                kindof = data.findAll('div',class_ = "article")
+                race_date = data.find('div', class_ = "price")
+                distances = data.find('div')
+                if (title and url and place and kindof and race_date and distances):
+                    name = title.find('span').text
+                    n_url = url.get('href')
+                    location = place[0].text
+                    kind = kindof[1].text
+                    date = race_date.find('span').text
+                    distance = distances.find('span').text
+               
                 result_data.append({
-                    "title": title,
-                    "url": webname + url 
+                    "title": name,
+                    "url": webname + n_url,
+                    "location": location, 
+                    "kind" : kind,
+                    "date" : date, 
+                    "distance" : distance
                 })
+            print(result_data)
             return result_data
-        print(result_data)
-            #return False
-    #page_data = get_data()           
-print(get_data(links))
+   
+
+get_data(links)
