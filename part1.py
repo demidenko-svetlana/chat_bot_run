@@ -18,15 +18,27 @@ def last_page():
         soup = BeautifulSoup(html, 'html.parser')
         for sibling in soup.find('li', {"class": "next"}).previous_sibling.previous_sibling:
             page = int(sibling.contents[0])
-            url_new = "https://get.run/races/europe/russia/?PAGEN_3 ={}"
+            url_new = "https://get.run/races/europe/russia/?PAGEN_3={}"
             links = []                
             for page_number in range(1, page + 1):
                 links.append(url_new.format(page_number))
     return links     
 links = last_page()
 
-#print(last_page())        
+#print(last_page()) 
 
+
+def get_distance(tag):
+    for link in links:
+        html = get_html(link)    
+        soup = BeautifulSoup(html, 'html.parser')
+        dist = soup.findAll('span', class_ = "label")
+        d = []
+        for distance in dist:
+            d.append(distance.contents[0])
+        distances = ' , '.join(d)
+
+    #print(distances)        
 
 
 def get_data(links):
@@ -43,8 +55,8 @@ def get_data(links):
                 place = data.findAll('div',class_ =  "article")
                 kindof = data.findAll('div',class_ = "article")
                 race_date = data.find('div', class_ = "price")
-                distances = data.findAll('span', class_ = "label")
-                if (title and url and place and kindof and race_date and distances):
+                distances = get_distance(data)
+                if (title and url and place and kindof and race_date):
                     name = title.find('span').text
                     n_url = url.get('href')
                     location = place[0].text
@@ -57,10 +69,12 @@ def get_data(links):
                     "url": webname + n_url,
                     "location": location, 
                     "kind" : kind,
-                    "date" : date 
-                    #"distance" : distance
+                    "date" : date,  
+                    "distance" : distances
                 })
-            print(result_data)
+
+    print(result_data)
+
     return result_data
    
 
