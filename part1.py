@@ -30,38 +30,38 @@ links = last_page()
 
 
 def get_data(links):
+    result_data = []
     for link in links:
         html = get_html(link)
         webname = 'https://get.run'
         if html:
             soup = BeautifulSoup(html, 'html.parser')
-            all_data = soup.findAll('div', {"class":["text","cont"]})
-            result_data = []
+            all_data = soup.findAll('div', {"class":"text"})
             for data in all_data:
                 title = data.find('div',class_ = "title")
                 url = data.find('a')
                 place = data.findAll('div',class_ =  "article")
                 kindof = data.findAll('div',class_ = "article")
                 race_date = data.find('div', class_ = "price")
-                distances = data.find('div')
+                distances = data.findAll('span', class_ = "label")
                 if (title and url and place and kindof and race_date and distances):
                     name = title.find('span').text
                     n_url = url.get('href')
                     location = place[0].text
                     kind = kindof[1].text
                     date = race_date.find('span').text
-                    distance = distances.find('span').text
+                    #distance = distances.find('span')
                
                 result_data.append({
                     "title": name,
                     "url": webname + n_url,
                     "location": location, 
                     "kind" : kind,
-                    "date" : date, 
-                    "distance" : distance
+                    "date" : date 
+                    #"distance" : distance
                 })
             print(result_data)
-            return result_data
+    return result_data
    
 
 get_data(links)
