@@ -28,17 +28,17 @@ links = last_page()
 #print(last_page()) 
 
 
-def get_distance(tag):
-    for link in links:
-        html = get_html(link)    
-        soup = BeautifulSoup(html, 'html.parser')
-        dist = soup.findAll('span', class_ = "label")
-        d = []
-        for distance in dist:
-            d.append(distance.contents[0])
-        distances = ' , '.join(d)
+# def get_distance(tag):
+#     for link in links:
+#         html = get_html(link)    
+#         soup = BeautifulSoup(html, 'html.parser')
+#         dist = soup.findAll('span', class_ = "label")
+#         d = []
+#         for distance in dist:
+#             d.append(distance.contents[0])
+#         distances = ' , '.join(d)
 
-    #print(distances)        
+#     #print(distances)        
 
 
 def get_data(links):
@@ -48,14 +48,15 @@ def get_data(links):
         webname = 'https://get.run'
         if html:
             soup = BeautifulSoup(html, 'html.parser')
-            all_data = soup.findAll('div', {"class":"text"})
+            info = soup.find('div', id = "confirmed")
+            all_data = info.findAll('div', {"class":"text"})
             for data in all_data:
                 title = data.find('div',class_ = "title")
                 url = data.find('a')
                 place = data.findAll('div',class_ =  "article")
                 kindof = data.findAll('div',class_ = "article")
                 race_date = data.find('div', class_ = "price")
-                distances = get_distance(data)
+                #distances = get_distance(data)
                 if (title and url and place and kindof and race_date):
                     name = title.find('span').text
                     n_url = url.get('href')
@@ -69,8 +70,8 @@ def get_data(links):
                     "url": webname + n_url,
                     "location": location, 
                     "kind" : kind,
-                    "date" : date,  
-                    "distance" : distances
+                    "date" : date  
+                    #"distance" : distances
                 })
 
     print(result_data)
