@@ -17,6 +17,7 @@ def last_page():
     if html:
         soup = BeautifulSoup(html, 'html.parser')
         for sibling in soup.find('li', {"class": "next"}).previous_sibling.previous_sibling:  # ищет количество страниц на сайте
+            page = int(sibling.contents[0])
             url_new = "https://get.run/races/europe/russia/?PAGEN_3={}"
             links = []                # формирует список страниц сайта 
             for page_number in range(1, page + 1):
