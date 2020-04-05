@@ -67,11 +67,8 @@ def calendar_page():
                         dist = dist[-1].text.replace('M', '42.195 км').replace('U', '45.595 км').replace('H', '21.097 км').replace('М', '42.195 км').replace('Н', '21.097 км')
                         d['distance'] = dist 
                         save_event(d)
-  
+
 def save_event(d):
     event_data = Event(date=d['date'], decline=d['decline'], links=d['links'], event=d['event_name'], distance=d['distance'], places=d['country'], race_type=d['race_type'])
     session.add(event_data)
     session.commit()
-
-
-calendar_page()
