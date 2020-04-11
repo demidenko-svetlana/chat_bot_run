@@ -62,9 +62,10 @@ def get_data(links):
                     kind = kindof[1].text
                     date = race_date.find('span').text
                     decline = "Подробности о статусе забега вы можете узнать, перейдя по ссылке"
-                    save_event(name, n_url, location, kind, date, distances, decline)
+                    country = "Россия"
+                    save_event(name, n_url, location, kind, date, distances, decline, country)
 
-def save_event(name, n_url, location, kind, date, distances, decline):
-    event_data = Event(date=date, decline=decline, links=n_url, event=name, distance=distances, places=location, race_type=kind)
+def save_event(name, n_url, location, kind, date, distances, decline, country):
+    event_data = Event(date=date, decline=decline, links=n_url, event=name, distance=distances, places=location, race_type=kind, country=country)
     session.add(event_data)
     session.commit()
