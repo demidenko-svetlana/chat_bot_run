@@ -68,6 +68,7 @@ def get_data(links):
                     "date": date,
                     "distance": distances,
                     "decline": "Подробности о статусе забега вы можете узнать, перейдя по ссылке"
+                    "country": "Россия"
                 })
 
     print(result_data)
