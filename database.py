@@ -21,8 +21,9 @@ class Event(base):
     distance = Column(String, nullable=True)
     places = Column(String, nullable=True)
     race_type = Column(String, nullable=True)
+    country = Column(String, nullable=True)
 
-    def __init__(self, date, decline, links, event, distance, places, race_type):
+    def __init__(self, date, decline, links, event, distance, places, race_type, country):
         self.date = date
         self.decline = decline
         self.links = links
@@ -30,10 +31,11 @@ class Event(base):
         self.distance = distance
         self.places = places
         self.race_type = race_type
+        self.country = country
 
     def __repr__(self):
-        return '<Occasion (event="{}", links="{}", date="{}", distance="{}", decline="{}", places="{}", race_type="{}")>'.format(
-            self.event, self.links, self.date, self.distance, self.declien, self.places, self.race_type)
+        return '<Occasion (event="{}", links="{}", date="{}", distance="{}", decline="{}", places="{}", race_type="{}", country="{}")>'.format(
+            self.event, self.links, self.date, self.distance, self.decline, self.places, self.race_type, self.country)
         
 base.metadata.create_all(engine)
 
