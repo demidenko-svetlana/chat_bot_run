@@ -1,25 +1,36 @@
+from sqlalchemy import text
 from database import Event, session
 
 
-rus_location = session.query(Event) \
-    .filter(Event.country == 'Россия').all()
+def rus_event(country):
+    rus_location = session.query(Event) \
+        .filter(Event.country == 'Россия').all()
 
-for loc in rus_location:
-    print(f'Забег {loc.event} проводится в России')
-
-
-border_location = session.query(Event) \
-    .filter(Event.country != 'Россия').all()
-
-for b_loc in border_location:
-    print(f'Забег {b_loc.event} проводится за границей')
+    for loc in rus_location:
+        event_location = loc.event
+        return event_location
 
 
-date_input = input()
-dates = session.query(Event) \
-    .filter(Event.date.like(f'%{date_input}')).all()
+def b_event(country):
+    border_location = session.query(Event) \
+        .filter(Event.country != 'Россия').all()
 
-for d_input in dates:
-    print(f'В указанном вами месяце {date_input} есть забег {d_input.event}')
+    for b_loc in border_location:
+        b_location = b_loc.event
+        return b_location
 
 
+def date_event(date):
+    dates = session.query(Event) \
+        .filter(Event.date.like(f'%{date}')).all()
+
+    for d_input in dates:
+        choosing_dates = d_input.date
+        return choosing_dates
+
+
+def event_date_country(dates, loc):
+    ew = session.query(Event) \
+        .filter(Event.date.like(f'%{dates}')). \
+        filter(Event.country == (loc)).all()
+    return ew
