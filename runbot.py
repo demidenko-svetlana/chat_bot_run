@@ -20,6 +20,11 @@ logging.basicConfig(format='%(asctime)s - %(levelname)s - %(message)s',
                     filename='bot.log'
                     )
 
+logging.basicConfig(format='%(asctime)s - %(levelname)s - %(message)s',
+                    level=logging.INFO,
+                    filename='bot.log'
+                    )
+
 
 def main():
     API_KEY = os.environ.get("API_KEY")    
@@ -111,7 +116,6 @@ def race_in_russia(bot, update, user_data):
     print(user_data['choosing_country'])
     return "date_world"
 
-
 def race_in_border(bot, update, user_data):
     update.message.reply_text("Ты выбрал заграницу. Укажи дату в формате «‎мм.гггг». Например: 04.2020", reply_markup=ReplyKeyboardRemove())
     user_data['choosing_country'] = update.message.text
@@ -159,5 +163,8 @@ def dontknow(bot, update, user_data):
     update.message.reply_text("Не понимаю", reply_markup=greet_user(bot, update))
     return ConversationHandler.END
 
+def dontknow(bot, update, user_data):
+    update.message.reply_text("Не понимаю", reply_markup=greet_user(bot, update))
+    return ConversationHandler.END
 
 main()

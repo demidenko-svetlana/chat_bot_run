@@ -1,7 +1,6 @@
 from sqlalchemy import text
 from database import Event, session
 
-
 def rus_event(country):
     rus_location = session.query(Event) \
         .filter(Event.country == 'Россия').all()
@@ -9,7 +8,6 @@ def rus_event(country):
     for loc in rus_location:
         event_location = loc.event
         return event_location
-
 
 def b_event(country):
     border_location = session.query(Event) \

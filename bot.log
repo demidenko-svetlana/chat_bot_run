@@ -11277,3 +11277,275 @@ Traceback (most recent call last):
     raise NetworkError('urllib3 HTTPError {0}'.format(error))
 telegram.error.NetworkError: urllib3 HTTPError ('Connection aborted.', ConnectionResetError(10054, 'Удаленный хост принудительно разорвал существующее подключение', None, 10054, None))
 2020-05-01 17:26:24,316 - INFO - Received signal 2 (SIGINT), stopping...
+2020-05-01 19:01:41,832 - WARNING - Retrying (Retry(total=2, connect=None, read=None, redirect=None)) after connection broken by 'ConnectTimeoutError(<telegram.vendor.ptb_urllib3.urllib3.contrib.socks.SOCKSHTTPSConnection object at 0x049E9790>, 'Connection to api.telegram.org timed out. (connect timeout=5.0)')': /bot1127438032:AAGaEqm7fW0KVtuy8BWGcANzqMeunLPleuQ/getUpdates
+2020-05-02 01:33:35,314 - WARNING - Retrying (Retry(total=2, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.contrib.socks.SOCKSHTTPSConnection object at 0x007C2910>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed')': /bot1127438032:AAGaEqm7fW0KVtuy8BWGcANzqMeunLPleuQ/getUpdates
+2020-05-02 01:33:35,645 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.contrib.socks.SOCKSHTTPSConnection object at 0x007C2A78>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed')': /bot1127438032:AAGaEqm7fW0KVtuy8BWGcANzqMeunLPleuQ/getUpdates
+2020-05-02 01:33:35,928 - WARNING - Retrying (Retry(total=0, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.contrib.socks.SOCKSHTTPSConnection object at 0x049E9D48>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed')': /bot1127438032:AAGaEqm7fW0KVtuy8BWGcANzqMeunLPleuQ/getUpdates
+2020-05-02 01:33:36,212 - ERROR - Error while getting Updates: urllib3 HTTPError SOCKSHTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot1127438032:AAGaEqm7fW0KVtuy8BWGcANzqMeunLPleuQ/getUpdates (Caused by NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.contrib.socks.SOCKSHTTPSConnection object at 0x049E9CA0>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))
+2020-05-02 01:33:36,213 - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "c:\projects\chat_bot_run\env\lib\site-packages\socks.py", line 809, in connect
+    negotiate(self, dest_addr, dest_port)
+  File "c:\projects\chat_bot_run\env\lib\site-packages\socks.py", line 443, in _negotiate_SOCKS5
+    self.proxy_peername, self.proxy_sockname = self._SOCKS5_request(
+  File "c:\projects\chat_bot_run\env\lib\site-packages\socks.py", line 520, in _SOCKS5_request
+    resolved = self._write_SOCKS5_address(dst, writer)
+  File "c:\projects\chat_bot_run\env\lib\site-packages\socks.py", line 573, in _write_SOCKS5_address
+    addresses = socket.getaddrinfo(host, port, socket.AF_UNSPEC,
+  File "C:\Users\Lenovo\AppData\Local\Programs\Python\Python38-32\lib\socket.py", line 918, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\projects\chat_bot_run\env\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\contrib\socks.py", line 79, in _new_conn
+    conn = socks.create_connection(
+  File "c:\projects\chat_bot_run\env\lib\site-packages\socks.py", line 209, in create_connection
+    raise err
+  File "c:\projects\chat_bot_run\env\lib\site-packages\socks.py", line 199, in create_connection
+    sock.connect((remote_host, remote_port))
+  File "c:\projects\chat_bot_run\env\lib\site-packages\socks.py", line 47, in wrapper
+    return function(*args, **kwargs)
+  File "c:\projects\chat_bot_run\env\lib\site-packages\socks.py", line 814, in connect
+    raise GeneralProxyError("Socket error", error)
+socks.GeneralProxyError: Socket error: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\projects\chat_bot_run\env\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 614, in urlopen
+    httplib_response = self._make_request(conn, method, url,
+  File "c:\projects\chat_bot_run\env\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 360, in _make_request
+    self._validate_conn(conn)
+  File "c:\projects\chat_bot_run\env\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 857, in _validate_conn
+    super(HTTPSConnectionPool, self)._validate_conn(conn)
+  File "c:\projects\chat_bot_run\env\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 289, in _validate_conn
+    conn.connect()
+  File "c:\projects\chat_bot_run\env\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connection.py", line 284, in connect
+    conn = self._new_conn()
+  File "c:\projects\chat_bot_run\env\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\contrib\socks.py", line 108, in _new_conn
+    raise NewConnectionError(
+telegram.vendor.ptb_urllib3.urllib3.exceptions.NewConnectionError: <telegram.vendor.ptb_urllib3.urllib3.contrib.socks.SOCKSHTTPSConnection object at 0x049E9CA0>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\projects\chat_bot_run\env\lib\site-packages\telegram\utils\request.py", line 225, in _request_wrapper
+    resp = self._con_pool.request(*args, **kwargs)
+  File "c:\projects\chat_bot_run\env\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\request.py", line 68, in request
+    return self.request_encode_body(method, url, fields=fields,
+  File "c:\projects\chat_bot_run\env\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\request.py", line 148, in request_encode_body
+    return self.urlopen(method, url, **extra_kw)
+  File "c:\projects\chat_bot_run\env\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\poolmanager.py", line 244, in urlopen
+    response = conn.urlopen(method, u.request_uri, **kw)
+  File "c:\projects\chat_bot_run\env\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 691, in urlopen
+    return self.urlopen(method, url, body, headers, retries,
+  File "c:\projects\chat_bot_run\env\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 691, in urlopen
+    return self.urlopen(method, url, body, headers, retries,
+  File "c:\projects\chat_bot_run\env\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 691, in urlopen
+    return self.urlopen(method, url, body, headers, retries,
+  File "c:\projects\chat_bot_run\env\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 665, in urlopen
+    retries = retries.increment(method, url, error=e, _pool=self,
+  File "c:\projects\chat_bot_run\env\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\util\retry.py", line 376, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+telegram.vendor.ptb_urllib3.urllib3.exceptions.MaxRetryError: SOCKSHTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot1127438032:AAGaEqm7fW0KVtuy8BWGcANzqMeunLPleuQ/getUpdates (Caused by NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.contrib.socks.SOCKSHTTPSConnection object at 0x049E9CA0>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\projects\chat_bot_run\env\lib\site-packages\telegram\ext\updater.py", line 380, in _network_loop_retry
+    if not action_cb():
+  File "c:\projects\chat_bot_run\env\lib\site-packages\telegram\ext\updater.py", line 338, in polling_action_cb
+    updates = self.bot.get_updates(self.last_update_id,
+  File "<decorator-gen-31>", line 2, in get_updates
+  File "c:\projects\chat_bot_run\env\lib\site-packages\telegram\bot.py", line 67, in decorator
+    result = func(*args, **kwargs)
+  File "c:\projects\chat_bot_run\env\lib\site-packages\telegram\bot.py", line 2097, in get_updates
+    result = self._request.post(url, data, timeout=float(read_latency) + float(timeout))
+  File "c:\projects\chat_bot_run\env\lib\site-packages\telegram\utils\request.py", line 331, in post
+    result = self._request_wrapper('POST', url,
+  File "c:\projects\chat_bot_run\env\lib\site-packages\telegram\utils\request.py", line 231, in _request_wrapper
+    raise NetworkError('urllib3 HTTPError {0}'.format(error))
+telegram.error.NetworkError: urllib3 HTTPError SOCKSHTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot1127438032:AAGaEqm7fW0KVtuy8BWGcANzqMeunLPleuQ/getUpdates (Caused by NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.contrib.socks.SOCKSHTTPSConnection object at 0x049E9CA0>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))
+2020-05-02 10:27:34,821 - WARNING - Retrying (Retry(total=2, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.contrib.socks.SOCKSHTTPSConnection object at 0x007C23A0>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed')': /bot1127438032:AAGaEqm7fW0KVtuy8BWGcANzqMeunLPleuQ/getUpdates
+2020-05-02 10:27:34,997 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.contrib.socks.SOCKSHTTPSConnection object at 0x007C22F8>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed')': /bot1127438032:AAGaEqm7fW0KVtuy8BWGcANzqMeunLPleuQ/getUpdates
+2020-05-02 10:27:35,165 - WARNING - Retrying (Retry(total=0, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.contrib.socks.SOCKSHTTPSConnection object at 0x007C2388>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed')': /bot1127438032:AAGaEqm7fW0KVtuy8BWGcANzqMeunLPleuQ/getUpdates
+2020-05-02 10:27:35,334 - ERROR - Error while getting Updates: urllib3 HTTPError SOCKSHTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot1127438032:AAGaEqm7fW0KVtuy8BWGcANzqMeunLPleuQ/getUpdates (Caused by NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.contrib.socks.SOCKSHTTPSConnection object at 0x007C2670>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))
+2020-05-02 10:27:35,335 - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "c:\projects\chat_bot_run\env\lib\site-packages\socks.py", line 809, in connect
+    negotiate(self, dest_addr, dest_port)
+  File "c:\projects\chat_bot_run\env\lib\site-packages\socks.py", line 443, in _negotiate_SOCKS5
+    self.proxy_peername, self.proxy_sockname = self._SOCKS5_request(
+  File "c:\projects\chat_bot_run\env\lib\site-packages\socks.py", line 520, in _SOCKS5_request
+    resolved = self._write_SOCKS5_address(dst, writer)
+  File "c:\projects\chat_bot_run\env\lib\site-packages\socks.py", line 573, in _write_SOCKS5_address
+    addresses = socket.getaddrinfo(host, port, socket.AF_UNSPEC,
+  File "C:\Users\Lenovo\AppData\Local\Programs\Python\Python38-32\lib\socket.py", line 918, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\projects\chat_bot_run\env\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\contrib\socks.py", line 79, in _new_conn
+    conn = socks.create_connection(
+  File "c:\projects\chat_bot_run\env\lib\site-packages\socks.py", line 209, in create_connection
+    raise err
+  File "c:\projects\chat_bot_run\env\lib\site-packages\socks.py", line 199, in create_connection
+    sock.connect((remote_host, remote_port))
+  File "c:\projects\chat_bot_run\env\lib\site-packages\socks.py", line 47, in wrapper
+    return function(*args, **kwargs)
+  File "c:\projects\chat_bot_run\env\lib\site-packages\socks.py", line 814, in connect
+    raise GeneralProxyError("Socket error", error)
+socks.GeneralProxyError: Socket error: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\projects\chat_bot_run\env\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 614, in urlopen
+    httplib_response = self._make_request(conn, method, url,
+  File "c:\projects\chat_bot_run\env\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 360, in _make_request
+    self._validate_conn(conn)
+  File "c:\projects\chat_bot_run\env\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 857, in _validate_conn
+    super(HTTPSConnectionPool, self)._validate_conn(conn)
+  File "c:\projects\chat_bot_run\env\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 289, in _validate_conn
+    conn.connect()
+  File "c:\projects\chat_bot_run\env\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connection.py", line 284, in connect
+    conn = self._new_conn()
+  File "c:\projects\chat_bot_run\env\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\contrib\socks.py", line 108, in _new_conn
+    raise NewConnectionError(
+telegram.vendor.ptb_urllib3.urllib3.exceptions.NewConnectionError: <telegram.vendor.ptb_urllib3.urllib3.contrib.socks.SOCKSHTTPSConnection object at 0x007C2670>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\projects\chat_bot_run\env\lib\site-packages\telegram\utils\request.py", line 225, in _request_wrapper
+    resp = self._con_pool.request(*args, **kwargs)
+  File "c:\projects\chat_bot_run\env\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\request.py", line 68, in request
+    return self.request_encode_body(method, url, fields=fields,
+  File "c:\projects\chat_bot_run\env\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\request.py", line 148, in request_encode_body
+    return self.urlopen(method, url, **extra_kw)
+  File "c:\projects\chat_bot_run\env\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\poolmanager.py", line 244, in urlopen
+    response = conn.urlopen(method, u.request_uri, **kw)
+  File "c:\projects\chat_bot_run\env\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 691, in urlopen
+    return self.urlopen(method, url, body, headers, retries,
+  File "c:\projects\chat_bot_run\env\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 691, in urlopen
+    return self.urlopen(method, url, body, headers, retries,
+  File "c:\projects\chat_bot_run\env\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 691, in urlopen
+    return self.urlopen(method, url, body, headers, retries,
+  File "c:\projects\chat_bot_run\env\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 665, in urlopen
+    retries = retries.increment(method, url, error=e, _pool=self,
+  File "c:\projects\chat_bot_run\env\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\util\retry.py", line 376, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+telegram.vendor.ptb_urllib3.urllib3.exceptions.MaxRetryError: SOCKSHTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot1127438032:AAGaEqm7fW0KVtuy8BWGcANzqMeunLPleuQ/getUpdates (Caused by NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.contrib.socks.SOCKSHTTPSConnection object at 0x007C2670>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\projects\chat_bot_run\env\lib\site-packages\telegram\ext\updater.py", line 380, in _network_loop_retry
+    if not action_cb():
+  File "c:\projects\chat_bot_run\env\lib\site-packages\telegram\ext\updater.py", line 338, in polling_action_cb
+    updates = self.bot.get_updates(self.last_update_id,
+  File "<decorator-gen-31>", line 2, in get_updates
+  File "c:\projects\chat_bot_run\env\lib\site-packages\telegram\bot.py", line 67, in decorator
+    result = func(*args, **kwargs)
+  File "c:\projects\chat_bot_run\env\lib\site-packages\telegram\bot.py", line 2097, in get_updates
+    result = self._request.post(url, data, timeout=float(read_latency) + float(timeout))
+  File "c:\projects\chat_bot_run\env\lib\site-packages\telegram\utils\request.py", line 331, in post
+    result = self._request_wrapper('POST', url,
+  File "c:\projects\chat_bot_run\env\lib\site-packages\telegram\utils\request.py", line 231, in _request_wrapper
+    raise NetworkError('urllib3 HTTPError {0}'.format(error))
+telegram.error.NetworkError: urllib3 HTTPError SOCKSHTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot1127438032:AAGaEqm7fW0KVtuy8BWGcANzqMeunLPleuQ/getUpdates (Caused by NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.contrib.socks.SOCKSHTTPSConnection object at 0x007C2670>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))
+2020-05-02 10:46:21,255 - WARNING - Retrying (Retry(total=2, connect=None, read=None, redirect=None)) after connection broken by 'ConnectTimeoutError(<telegram.vendor.ptb_urllib3.urllib3.contrib.socks.SOCKSHTTPSConnection object at 0x007C2340>, 'Connection to api.telegram.org timed out. (connect timeout=5.0)')': /bot1127438032:AAGaEqm7fW0KVtuy8BWGcANzqMeunLPleuQ/getUpdates
+2020-05-02 10:46:24,754 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.contrib.socks.SOCKSHTTPSConnection object at 0x007C2E98>: Failed to establish a new connection: [Errno 11004] getaddrinfo failed')': /bot1127438032:AAGaEqm7fW0KVtuy8BWGcANzqMeunLPleuQ/getUpdates
+2020-05-02 10:46:25,627 - WARNING - Retrying (Retry(total=0, connect=None, read=None, redirect=None)) after connection broken by 'NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.contrib.socks.SOCKSHTTPSConnection object at 0x007C2FE8>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed')': /bot1127438032:AAGaEqm7fW0KVtuy8BWGcANzqMeunLPleuQ/getUpdates
+2020-05-02 10:46:25,839 - ERROR - Error while getting Updates: urllib3 HTTPError SOCKSHTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot1127438032:AAGaEqm7fW0KVtuy8BWGcANzqMeunLPleuQ/getUpdates (Caused by NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.contrib.socks.SOCKSHTTPSConnection object at 0x010A5160>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))
+2020-05-02 10:46:25,839 - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "c:\projects\chat_bot_run\env\lib\site-packages\socks.py", line 809, in connect
+    negotiate(self, dest_addr, dest_port)
+  File "c:\projects\chat_bot_run\env\lib\site-packages\socks.py", line 443, in _negotiate_SOCKS5
+    self.proxy_peername, self.proxy_sockname = self._SOCKS5_request(
+  File "c:\projects\chat_bot_run\env\lib\site-packages\socks.py", line 520, in _SOCKS5_request
+    resolved = self._write_SOCKS5_address(dst, writer)
+  File "c:\projects\chat_bot_run\env\lib\site-packages\socks.py", line 573, in _write_SOCKS5_address
+    addresses = socket.getaddrinfo(host, port, socket.AF_UNSPEC,
+  File "C:\Users\Lenovo\AppData\Local\Programs\Python\Python38-32\lib\socket.py", line 918, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\projects\chat_bot_run\env\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\contrib\socks.py", line 79, in _new_conn
+    conn = socks.create_connection(
+  File "c:\projects\chat_bot_run\env\lib\site-packages\socks.py", line 209, in create_connection
+    raise err
+  File "c:\projects\chat_bot_run\env\lib\site-packages\socks.py", line 199, in create_connection
+    sock.connect((remote_host, remote_port))
+  File "c:\projects\chat_bot_run\env\lib\site-packages\socks.py", line 47, in wrapper
+    return function(*args, **kwargs)
+  File "c:\projects\chat_bot_run\env\lib\site-packages\socks.py", line 814, in connect
+    raise GeneralProxyError("Socket error", error)
+socks.GeneralProxyError: Socket error: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\projects\chat_bot_run\env\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 614, in urlopen
+    httplib_response = self._make_request(conn, method, url,
+  File "c:\projects\chat_bot_run\env\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 360, in _make_request
+    self._validate_conn(conn)
+  File "c:\projects\chat_bot_run\env\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 857, in _validate_conn
+    super(HTTPSConnectionPool, self)._validate_conn(conn)
+  File "c:\projects\chat_bot_run\env\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 289, in _validate_conn
+    conn.connect()
+  File "c:\projects\chat_bot_run\env\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connection.py", line 284, in connect
+    conn = self._new_conn()
+  File "c:\projects\chat_bot_run\env\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\contrib\socks.py", line 108, in _new_conn
+    raise NewConnectionError(
+telegram.vendor.ptb_urllib3.urllib3.exceptions.NewConnectionError: <telegram.vendor.ptb_urllib3.urllib3.contrib.socks.SOCKSHTTPSConnection object at 0x010A5160>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\projects\chat_bot_run\env\lib\site-packages\telegram\utils\request.py", line 225, in _request_wrapper
+    resp = self._con_pool.request(*args, **kwargs)
+  File "c:\projects\chat_bot_run\env\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\request.py", line 68, in request
+    return self.request_encode_body(method, url, fields=fields,
+  File "c:\projects\chat_bot_run\env\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\request.py", line 148, in request_encode_body
+    return self.urlopen(method, url, **extra_kw)
+  File "c:\projects\chat_bot_run\env\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\poolmanager.py", line 244, in urlopen
+    response = conn.urlopen(method, u.request_uri, **kw)
+  File "c:\projects\chat_bot_run\env\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 691, in urlopen
+    return self.urlopen(method, url, body, headers, retries,
+  File "c:\projects\chat_bot_run\env\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 691, in urlopen
+    return self.urlopen(method, url, body, headers, retries,
+  File "c:\projects\chat_bot_run\env\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 691, in urlopen
+    return self.urlopen(method, url, body, headers, retries,
+  File "c:\projects\chat_bot_run\env\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\connectionpool.py", line 665, in urlopen
+    retries = retries.increment(method, url, error=e, _pool=self,
+  File "c:\projects\chat_bot_run\env\lib\site-packages\telegram\vendor\ptb_urllib3\urllib3\util\retry.py", line 376, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+telegram.vendor.ptb_urllib3.urllib3.exceptions.MaxRetryError: SOCKSHTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot1127438032:AAGaEqm7fW0KVtuy8BWGcANzqMeunLPleuQ/getUpdates (Caused by NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.contrib.socks.SOCKSHTTPSConnection object at 0x010A5160>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\projects\chat_bot_run\env\lib\site-packages\telegram\ext\updater.py", line 380, in _network_loop_retry
+    if not action_cb():
+  File "c:\projects\chat_bot_run\env\lib\site-packages\telegram\ext\updater.py", line 338, in polling_action_cb
+    updates = self.bot.get_updates(self.last_update_id,
+  File "<decorator-gen-31>", line 2, in get_updates
+  File "c:\projects\chat_bot_run\env\lib\site-packages\telegram\bot.py", line 67, in decorator
+    result = func(*args, **kwargs)
+  File "c:\projects\chat_bot_run\env\lib\site-packages\telegram\bot.py", line 2097, in get_updates
+    result = self._request.post(url, data, timeout=float(read_latency) + float(timeout))
+  File "c:\projects\chat_bot_run\env\lib\site-packages\telegram\utils\request.py", line 331, in post
+    result = self._request_wrapper('POST', url,
+  File "c:\projects\chat_bot_run\env\lib\site-packages\telegram\utils\request.py", line 231, in _request_wrapper
+    raise NetworkError('urllib3 HTTPError {0}'.format(error))
+telegram.error.NetworkError: urllib3 HTTPError SOCKSHTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot1127438032:AAGaEqm7fW0KVtuy8BWGcANzqMeunLPleuQ/getUpdates (Caused by NewConnectionError('<telegram.vendor.ptb_urllib3.urllib3.contrib.socks.SOCKSHTTPSConnection object at 0x010A5160>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))
+2020-05-02 11:05:52,713 - INFO - Received signal 2 (SIGINT), stopping...
